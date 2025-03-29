@@ -1,0 +1,13 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false  # Không đăng ký chính nó
+    fetchRegistry: false        # Không lấy danh sách service khác
+
+logging:
+  level:
+    org.springframework.cloud.netflix.eureka: TRACE

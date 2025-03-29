@@ -1,0 +1,20 @@
+server:
+  port: 8082  # Cổng của API Gateway
+
+spring:
+  application:
+    name: api-gateway  # Tên service đăng ký với Eureka
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # Kích hoạt tự động định tuyến theo Eureka
+          lower-case-service-id: true  # Chuyển tên service về chữ thường
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Địa chỉ của Eureka Server
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true  # Ưu tiên sử dụng địa chỉ IP khi đăng ký vào Eureka
